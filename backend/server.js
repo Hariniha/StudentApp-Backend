@@ -5,11 +5,21 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 
 dotenv.config();
+const fs = require('fs');
+const path = require('path');
+
+const uploadPath = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath);
+}
+
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
+
 
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -20,6 +30,8 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/auth', authRoutes);
 const achievementsRoutes = require('./routes/achievements');
 app.use('/api/achievements', achievementsRoutes);
+app.use('/api/marksheets', require('./routes/marksheets'));
+
 
 // Start server
 

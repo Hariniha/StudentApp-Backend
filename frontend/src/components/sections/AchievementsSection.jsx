@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trophy, Star, Upload, Camera, Video } from 'lucide-react';
+import { Plus, Trophy, Star, Upload, Camera, Video, Pencil, Trash2 } from 'lucide-react';
 
 export const AchievementsSection = () => {
   const [showAddAchievement, setShowAddAchievement] = useState(false);
@@ -9,6 +9,7 @@ export const AchievementsSection = () => {
   const [category, setCategory] = useState('');
   const [mediaFile, setMediaFile] = useState(null);
   const [achievements, setAchievements] = useState([]);
+  const [editId, setEditId] = useState(null);
 
   const categories = ['all', 'Academic', 'Research', 'Community', 'Sports', 'Arts'];
 
@@ -24,9 +25,18 @@ export const AchievementsSection = () => {
       ? achievements
       : achievements.filter((achievement) => achievement.category === selectedCategory);
 
-  const handleAddAchievement = async () => {
-    if (!title || !description || !category || !mediaFile) {
-      alert('Please fill in all fields and upload a file.');
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setCategory('');
+    setMediaFile(null);
+    setEditId(null);
+    setShowAddAchievement(false);
+  };
+
+  const handleAddOrEditAchievement = async () => {
+    if (!title || !description || !category || (!mediaFile && !editId)) {
+      alert('Please fill in all fields.');
       return;
     }
 
@@ -34,25 +44,57 @@ export const AchievementsSection = () => {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('category', category);
-    formData.append('media', mediaFile);
+    if (mediaFile) formData.append('media', mediaFile);
 
     try {
-      const res = await fetch('http://localhost:5000/api/achievements', {
-        method: 'POST',
-        body: formData,
-      });
+      const res = await fetch(
+        editId
+          ? `http://localhost:5000/api/achievements/${editId}`
+          : 'http://localhost:5000/api/achievements',
+        {
+          method: editId ? 'PUT' : 'POST',
+          body: formData,
+        }
+      );
 
       const data = await res.json();
-      setAchievements([data, ...achievements]);
-      setTitle('');
-      setDescription('');
-      setCategory('');
-      setMediaFile(null);
-      setShowAddAchievement(false);
+
+      if (editId) {
+        setAchievements(achievements.map((a) => (a._id === editId ? data : a)));
+      } else {
+        setAchievements([data, ...achievements]);
+      }
+
+      resetForm();
     } catch (err) {
-      console.error('Error uploading achievement:', err);
-      alert('Upload failed');
+      console.error('Error submitting achievement:', err);
+      alert('Submission failed: ' + (err.message || 'Unknown error'));
     }
+  };
+
+  const handleDeleteAchievement = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this achievement?')) return;
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/achievements/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) throw new Error('Failed to delete');
+
+      setAchievements(achievements.filter((a) => a._id !== id));
+    } catch (err) {
+      console.error('Error deleting achievement:', err);
+      alert('Failed to delete achievement');
+    }
+  };
+
+  const handleEditClick = (achievement) => {
+    setTitle(achievement.title);
+    setDescription(achievement.description);
+    setCategory(achievement.category);
+    setEditId(achievement._id);
+    setShowAddAchievement(true);
   };
 
   return (
@@ -130,10 +172,13 @@ export const AchievementsSection = () => {
                 <div className="text-xs text-gray-500">
                   {new Date(achievement.date).toLocaleDateString()}
                 </div>
-                <div className="flex items-center space-x-1 text-yellow-500">
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
+                <div className="flex items-center space-x-2">
+                  <button onClick={() => handleEditClick(achievement)} title="Edit">
+                    <Pencil className="w-4 h-4 text-blue-500 hover:text-blue-700" />
+                  </button>
+                  <button onClick={() => handleDeleteAchievement(achievement._id)} title="Delete">
+                    <Trash2 className="w-4 h-4 text-red-500 hover:text-red-700" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -144,7 +189,9 @@ export const AchievementsSection = () => {
       {showAddAchievement && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Add New Achievement</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              {editId ? 'Edit Achievement' : 'Add New Achievement'}
+            </h3>
             <div className="space-y-4">
               <input
                 type="text"
@@ -181,16 +228,16 @@ export const AchievementsSection = () => {
 
             <div className="flex space-x-3 mt-6">
               <button
-                onClick={() => setShowAddAchievement(false)}
+                onClick={resetForm}
                 className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
               >
                 Cancel
               </button>
               <button
-                onClick={handleAddAchievement}
+                onClick={handleAddOrEditAchievement}
                 className="flex-1 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg hover:from-purple-600 hover:to-pink-700"
               >
-                Add Achievement
+                {editId ? 'Update' : 'Add Achievement'}
               </button>
             </div>
           </div>

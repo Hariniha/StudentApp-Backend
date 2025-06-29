@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { StatsCard } from '../dashboard/StatsCard';
 import { ProgressChart } from '../dashboard/ProgressChart';
 import { User, Trophy, BookOpen, Target, TrendingUp, Calendar } from 'lucide-react';
 
-const mockProgressData = [
-  { subject: 'Mathematics', score: 85, trend: 'up' },
-  { subject: 'Science', score: 78, trend: 'up' },
-  { subject: 'English', score: 92, trend: 'stable' },
-  { subject: 'History', score: 76, trend: 'down' },
-  { subject: 'Computer Science', score: 88, trend: 'up' },
-];
-
 export const Dashboard = () => {
+  const [progressData, setProgressData] = useState([]);
+
+  const trends = ['up', 'down', 'stable'];
+
+useEffect(() => {
+  const fetchProgress = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/marksheets');
+
+      const transformed = res.data.map(m => ({
+        subject: m.subject,
+        score: gradeToScore(m.grade),
+        // Assign a random trend for demo purposes:
+        trend: trends[Math.floor(Math.random() * trends.length)],
+      }));
+
+      setProgressData(transformed);
+    } catch (err) {
+      console.error('Failed to fetch marksheet data:', err);
+    }
+  };
+
+  fetchProgress();
+}, []);
+
+
+  const gradeToScore = (grade) => {
+    const gradeMap = {
+      'A+': 95,
+      A: 90,
+      'B+': 85,
+      B: 80,
+      'C+': 75,
+      C: 70,
+    };
+    return gradeMap[grade] || 60;
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -64,7 +95,7 @@ export const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <ProgressChart data={mockProgressData} />
+        <ProgressChart data={progressData} />
 
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Activities</h3>
