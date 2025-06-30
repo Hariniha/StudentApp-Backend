@@ -14,14 +14,49 @@ useEffect(() => {
     try {
       const res = await axios.get('http://localhost:5000/api/marksheets');
 
-      const transformed = res.data.map(m => ({
-        subject: m.subject,
-        score: gradeToScore(m.grade),
-        // Assign a random trend for demo purposes:
-        trend: trends[Math.floor(Math.random() * trends.length)],
-      }));
+      // Sort marksheets by upload date
+      const sorted = [...res.data].sort((a, b) => new Date(a.uploadDate) - new Date(b.uploadDate));
 
-      setProgressData(transformed);
+      const subjectMap = {};
+      const progressData = [];
+
+      sorted.forEach((mark) => {
+        const currentScore = gradeToScore(mark.grade);
+
+        if (!subjectMap[mark.subject]) {
+          // First time seeing this subject
+          subjectMap[mark.subject] = { lastScore: currentScore };
+          progressData.push({
+            subject: mark.subject,
+            score: currentScore,
+            trend: 'stable',
+          });
+        } else {
+          const prevScore = subjectMap[mark.subject].lastScore;
+          let trend = 'stable';
+          if (currentScore > prevScore) trend = 'up';
+          else if (currentScore < prevScore) trend = 'down';
+
+          progressData.push({
+            subject: mark.subject,
+            score: currentScore,
+            trend,
+          });
+
+          // Update latest score
+          subjectMap[mark.subject].lastScore = currentScore;
+        }
+      });
+
+      // Keep only the latest entry per subject (if needed)
+      const latestProgress = Object.values(
+        progressData.reduce((acc, item) => {
+          acc[item.subject] = item;
+          return acc;
+        }, {})
+      );
+
+      setProgressData(latestProgress);
     } catch (err) {
       console.error('Failed to fetch marksheet data:', err);
     }
@@ -29,6 +64,7 @@ useEffect(() => {
 
   fetchProgress();
 }, []);
+
 
 
   const gradeToScore = (grade) => {

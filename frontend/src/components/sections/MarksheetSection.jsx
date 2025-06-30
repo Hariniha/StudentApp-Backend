@@ -24,8 +24,18 @@ export const MarksheetSection = () => {
     }
   };
 
- 
- 
+  const handleDelete = async (id) => {
+  if (!window.confirm('Are you sure you want to delete this marksheet?')) return;
+  try {
+    await axios.delete(`http://localhost:5000/api/marksheets/${id}`);
+    fetchMarksheets(); // Refresh list
+  } catch (err) {
+    console.error('Delete failed:', err);
+  }
+};
+
+
+
 
   const handleUpload = async () => {
     const data = new FormData();
@@ -47,7 +57,7 @@ export const MarksheetSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
+
   const gradeColors = {
     'A+': 'bg-green-100 text-green-800',
     A: 'bg-green-100 text-green-700',
@@ -84,9 +94,8 @@ export const MarksheetSection = () => {
                 <FileText className="w-6 h-6 text-blue-600" />
               </div>
               <span
-                className={`px-2 py-1 rounded-full text-sm font-medium ${
-                  gradeColors[marksheet.grade] || 'bg-gray-100 text-gray-800'
-                }`}
+                className={`px-2 py-1 rounded-full text-sm font-medium ${gradeColors[marksheet.grade] || 'bg-gray-100 text-gray-800'
+                  }`}
               >
                 {marksheet.grade}
               </span>
@@ -94,25 +103,21 @@ export const MarksheetSection = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-2">{marksheet.subject}</h3>
             <p className="text-sm text-gray-600 mb-4">{marksheet.semester}</p>
             <div className="space-y-2 mb-4">
-              {/* <div className="flex justify-between text-sm">
-                <span className="text-gray-500">File Size:</span>
-                <span className="text-gray-900">{marksheet.fileSize || 'Unknown'}</span>
-              </div> */}
+
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Uploaded:</span>
-                <span className="text-gray-900">{new Date(marksheet.uploadDate).toLocaleDateString()}</span>
+                <span className="text-gray-900">
+                  {marksheet.uploadDate ? new Date(marksheet.uploadDate).toLocaleDateString() : 'No date'}
+                </span>
+                <button
+      onClick={() => handleDelete(marksheet._id)}
+      className="text-red-500 hover:text-red-700 ml-4"
+      title="Delete"
+    >
+      <Trash2 className="w-5 h-5" />
+    </button>
               </div>
             </div>
-            {/* <div className="flex space-x-2">
-              <a href={marksheet.fileUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center space-x-1 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">
-                <Eye className="w-4 h-4" />
-                <span className="text-sm">View</span>
-              </a>
-              <a href={marksheet.fileUrl} download className="flex-1 flex items-center justify-center space-x-1 px-3 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors">
-                <Download className="w-4 h-4" />
-                <span className="text-sm">Download</span>
-              </a>
-            </div> */}
           </div>
         ))}
       </div>
@@ -130,16 +135,27 @@ export const MarksheetSection = () => {
                 placeholder="Enter subject"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
               />
+            
               <select
                 name="semester"
                 value={formData.semester}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
               >
-                <option value="">Select Semester</option>
-                <option value="Semester 1">Semester 1</option>
-                <option value="Semester 2">Semester 2</option>
-                <option value="Semester 3">Semester 3</option>
+                
+
+                  <option value="">Select Semester</option>
+                  <option value="Semester 1">Semester 1</option>
+                  <option value="Semester 2">Semester 2</option>
+                  <option value="Semester 3">Semester 3</option>
+                  <option value="Semester 4">Semester 4</option>
+                  <option value="Semester 3">Semester 5</option>
+                  <option value="Semester 4">Semester 6</option>
+                  <option value="Semester 3">Semester 7</option>
+                  <option value="Semester 4">Semester 8</option>
+                
+
+               
               </select>
               <input
                 type="text"
@@ -149,11 +165,7 @@ export const MarksheetSection = () => {
                 placeholder="Enter grade (e.g., A+)"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
               />
-              {/* <input
-                type="file"
-                onChange={handleFileChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-              /> */}
+
             </div>
             <div className="flex space-x-3 mt-6">
               <button
