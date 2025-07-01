@@ -8,6 +8,19 @@ export const Dashboard = () => {
   const [progressData, setProgressData] = useState([]);
 
   const trends = ['up', 'down', 'stable'];
+  
+  const gradeToScore = (grade) => {
+  const gradeMap = {
+    'O': 95,
+    'A+': 85,
+    'A': 75,
+    'B+': 65,
+    'B': 55,
+    'RA': 45,
+    'SA': 0,
+  };
+  return gradeMap[grade] || 0;
+};
 
 useEffect(() => {
   const fetchProgress = async () => {
@@ -50,11 +63,11 @@ useEffect(() => {
 
       // Keep only the latest entry per subject (if needed)
       const latestProgress = Object.values(
-        progressData.reduce((acc, item) => {
-          acc[item.subject] = item;
-          return acc;
-        }, {})
-      );
+  progressData.reduce((acc, item) => {
+    acc[item.subject] = item;
+    return acc;
+  }, {})
+);
 
       setProgressData(latestProgress);
     } catch (err) {
@@ -67,17 +80,7 @@ useEffect(() => {
 
 
 
-  const gradeToScore = (grade) => {
-    const gradeMap = {
-      'A+': 95,
-      A: 90,
-      'B+': 85,
-      B: 80,
-      'C+': 75,
-      C: 70,
-    };
-    return gradeMap[grade] || 60;
-  };
+  
 
   return (
     <div className="space-y-6">

@@ -25,14 +25,14 @@ export const MarksheetSection = () => {
   };
 
   const handleDelete = async (id) => {
-  if (!window.confirm('Are you sure you want to delete this marksheet?')) return;
-  try {
-    await axios.delete(`http://localhost:5000/api/marksheets/${id}`);
-    fetchMarksheets(); // Refresh list
-  } catch (err) {
-    console.error('Delete failed:', err);
-  }
-};
+    if (!window.confirm('Are you sure you want to delete this marksheet?')) return;
+    try {
+      await axios.delete(`http://localhost:5000/api/marksheets/${id}`);
+      fetchMarksheets(); // Refresh list
+    } catch (err) {
+      console.error('Delete failed:', err);
+    }
+  };
 
 
 
@@ -110,12 +110,12 @@ export const MarksheetSection = () => {
                   {marksheet.uploadDate ? new Date(marksheet.uploadDate).toLocaleDateString() : 'No date'}
                 </span>
                 <button
-      onClick={() => handleDelete(marksheet._id)}
-      className="text-red-500 hover:text-red-700 ml-4"
-      title="Delete"
-    >
-      <Trash2 className="w-5 h-5" />
-    </button>
+                  onClick={() => handleDelete(marksheet._id)}
+                  className="text-red-500 hover:text-red-700 ml-4"
+                  title="Delete"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
               </div>
             </div>
           </div>
@@ -135,36 +135,43 @@ export const MarksheetSection = () => {
                 placeholder="Enter subject"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
               />
-            
+
               <select
                 name="semester"
                 value={formData.semester}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
               >
-                
 
-                  <option value="">Select Semester</option>
-                  <option value="Semester 1">Semester 1</option>
-                  <option value="Semester 2">Semester 2</option>
-                  <option value="Semester 3">Semester 3</option>
-                  <option value="Semester 4">Semester 4</option>
-                  <option value="Semester 3">Semester 5</option>
-                  <option value="Semester 4">Semester 6</option>
-                  <option value="Semester 3">Semester 7</option>
-                  <option value="Semester 4">Semester 8</option>
-                
 
-               
+                <option value="">Select Semester</option>
+                <option value="Semester 1">Semester 1</option>
+                <option value="Semester 2">Semester 2</option>
+                <option value="Semester 3">Semester 3</option>
+                <option value="Semester 4">Semester 4</option>
+                <option value="Semester 3">Semester 5</option>
+                <option value="Semester 4">Semester 6</option>
+                <option value="Semester 3">Semester 7</option>
+                <option value="Semester 4">Semester 8</option>
+
+
+
               </select>
-              <input
-                type="text"
+              <select
                 name="grade"
                 value={formData.grade}
                 onChange={handleInputChange}
-                placeholder="Enter grade (e.g., A+)"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-              />
+              >
+                <option value="">Select grade</option>
+                <option value="O">O </option>
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="RA">RA</option>
+                <option value="SA">SA</option>
+              </select>
 
             </div>
             <div className="flex space-x-3 mt-6">
