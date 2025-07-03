@@ -2,11 +2,13 @@ import React from 'react';
 import { Clock, CheckCircle, Circle } from 'lucide-react';
 
 const categoryColors = {
-  'study-habits': 'from-blue-500 to-blue-600',
-  'confidence': 'from-purple-500 to-purple-600',
-  'emotional-wellbeing': 'from-teal-500 to-teal-600',
-  'communication': 'from-green-500 to-green-600',
+  'CSE': 'from-blue-500 to-blue-600',
+  'AERO': 'from-purple-500 to-purple-600',
+  'MECH': 'from-teal-500 to-teal-600',
+  'ECE': 'from-green-500 to-green-600',
+  'EEE': 'from-yellow-500 to-yellow-600',  // changed to yellow for differentiation
 };
+
 
 export const QuizCard = ({ quiz, onStart }) => {
   const isCompleted = quiz.completedAt !== undefined;

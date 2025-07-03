@@ -1,0 +1,389 @@
+[
+  {
+    "title": "Computer Science & Engineering Quiz",
+    "description": "Test your knowledge in computer science fundamentals and programming.",
+    "category": "CSE",
+    "questions": [
+      {
+        "id": "cse1",
+        "text": "What does CPU stand for?",
+        "type": "multiple-choice",
+        "options": ["Central Processing Unit", "Computer Personal Unit", "Central Performance Unit", "Control Processing Unit"],
+        "correctAnswer": "Central Processing Unit"
+      },
+      {
+        "id": "cse2",
+        "text": "Which data structure uses FIFO principle?",
+        "type": "multiple-choice",
+        "options": ["Stack", "Queue", "Tree", "Graph"],
+        "correctAnswer": "Queue"
+      },
+      {
+        "id": "cse3",
+        "text": "What is the time complexity of binary search?",
+        "type": "multiple-choice",
+        "options": ["O(n)", "O(log n)", "O(n²)", "O(1)"],
+        "correctAnswer": "O(log n)"
+      },
+      {
+        "id": "cse4",
+        "text": "Do you know the difference between a compiler and an interpreter?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "cse5",
+        "text": "Rate your proficiency in programming languages.",
+        "type": "multiple-choice",
+        "options": ["1-3 (Beginner)", "4-6 (Intermediate)", "7-8 (Advanced)", "9-10 (Expert)"],
+        "correctAnswer": "7-8 (Advanced)"
+      },
+      {
+        "id": "cse6",
+        "text": "What is the primary function of an Operating System?",
+        "type": "multiple-choice",
+        "options": ["Managing Hardware", "Compiling Code", "Storing Files", "Running Internet Browsers"],
+        "correctAnswer": "Managing Hardware"
+      },
+      {
+        "id": "cse7",
+        "text": "Which of these is NOT a programming paradigm?",
+        "type": "multiple-choice",
+        "options": ["Procedural", "Object-Oriented", "Logical", "Functional"],
+        "correctAnswer": "Logical"
+      },
+      {
+        "id": "cse8",
+        "text": "Explain what a database is.",
+        "type": "multiple-choice",
+        "options": ["Data Storage System", "Programming Language", "Hardware Device", "Operating System"],
+        "correctAnswer": "Data Storage System"
+      },
+      {
+        "id": "cse9",
+        "text": "Is recursion an essential concept in algorithms?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Sometimes", "Don't know"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "cse10",
+        "text": "How comfortable are you with data structures and algorithms?",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Advanced"
+      }
+    ]
+  },
+  {
+    "title": "Mechanical Engineering Quiz",
+    "description": "Assess your knowledge of mechanics, thermodynamics, and mechanical systems.",
+    "category": "MECH",
+    "questions": [
+      {
+        "id": "mech1",
+        "text": "What is the unit of torque?",
+        "type": "multiple-choice",
+        "options": ["Newton", "Newton-meter", "Joule", "Watt"],
+        "correctAnswer": "Newton-meter"
+      },
+      {
+        "id": "mech2",
+        "text": "Which law explains the relationship between pressure and volume of a gas?",
+        "type": "multiple-choice",
+        "options": ["Boyle’s Law", "Charles’s Law", "Newton’s Law", "Ohm’s Law"],
+        "correctAnswer": "Boyle’s Law"
+      },
+      {
+        "id": "mech3",
+        "text": "What is the primary function of a heat exchanger?",
+        "type": "multiple-choice",
+        "options": ["Convert heat to electricity", "Transfer heat between two fluids", "Store heat energy", "Cool down engines"],
+        "correctAnswer": "Transfer heat between two fluids"
+      },
+      {
+        "id": "mech4",
+        "text": "Do you understand the concept of stress and strain?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "mech5",
+        "text": "Rate your knowledge of thermodynamics.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      },
+      {
+        "id": "mech6",
+        "text": "What is the working principle of a four-stroke engine?",
+        "type": "multiple-choice",
+        "options": ["Intake, Compression, Power, Exhaust", "Intake, Power, Compression, Exhaust", "Power, Intake, Compression, Exhaust", "Exhaust, Intake, Power, Compression"],
+        "correctAnswer": "Intake, Compression, Power, Exhaust"
+      },
+      {
+        "id": "mech7",
+        "text": "Which material property measures resistance to deformation?",
+        "type": "multiple-choice",
+        "options": ["Ductility", "Toughness", "Hardness", "Elasticity"],
+        "correctAnswer": "Hardness"
+      },
+      {
+        "id": "mech8",
+        "text": "What is the difference between conduction and convection?",
+        "type": "multiple-choice",
+        "options": ["Heat transfer by direct contact", "Heat transfer by fluid motion", "Both", "None"],
+        "correctAnswer": "Both"
+      },
+      {
+        "id": "mech9",
+        "text": "Is understanding fluid mechanics important for Mechanical Engineers?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Don't know"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "mech10",
+        "text": "Rate your practical skills in using mechanical tools.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      }
+    ]
+  },
+
+  {
+    "title": "Aeronautical Engineering Quiz",
+    "description": "Test your understanding of aerodynamics, propulsion, and aircraft systems.",
+    "category": "AERO",
+    "questions": [
+      {
+        "id": "aero1",
+        "text": "What is Bernoulli’s principle used for?",
+        "type": "multiple-choice",
+        "options": ["Explaining lift on wings", "Fuel combustion", "Aircraft navigation", "Jet propulsion"],
+        "correctAnswer": "Explaining lift on wings"
+      },
+      {
+        "id": "aero2",
+        "text": "What is the primary fuel for most commercial aircraft?",
+        "type": "multiple-choice",
+        "options": ["Kerosene", "Gasoline", "Diesel", "Hydrogen"],
+        "correctAnswer": "Kerosene"
+      },
+      {
+        "id": "aero3",
+        "text": "What does the Mach number represent?",
+        "type": "multiple-choice",
+        "options": ["Speed relative to sound", "Weight of the aircraft", "Altitude of flight", "Fuel efficiency"],
+        "correctAnswer": "Speed relative to sound"
+      },
+      {
+        "id": "aero4",
+        "text": "Do you understand the concept of aerodynamics?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "aero5",
+        "text": "Rate your knowledge of propulsion systems.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      },
+      {
+        "id": "aero6",
+        "text": "What is the role of the ailerons on an airplane?",
+        "type": "multiple-choice",
+        "options": ["Control pitch", "Control yaw", "Control roll", "Control thrust"],
+        "correctAnswer": "Control roll"
+      },
+      {
+        "id": "aero7",
+        "text": "Which part of the aircraft reduces drag?",
+        "type": "multiple-choice",
+        "options": ["Fuselage", "Winglets", "Landing gear", "Engine nacelles"],
+        "correctAnswer": "Winglets"
+      },
+      {
+        "id": "aero8",
+        "text": "What is the difference between subsonic and supersonic flight?",
+        "type": "multiple-choice",
+        "options": ["Speed below sound", "Speed above sound", "Both", "None"],
+        "correctAnswer": "Both"
+      },
+      {
+        "id": "aero9",
+        "text": "Is knowledge of control systems essential in aerospace?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Don't know"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "aero10",
+        "text": "Rate your comfort level with aerospace simulation software.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Electronics and Communication Engineering Quiz",
+    "description": "Challenge yourself on concepts in electronics, signal processing, and communication.",
+    "category": "ECE",
+    "questions": [
+      {
+        "id": "ece1",
+        "text": "What is the unit of capacitance?",
+        "type": "multiple-choice",
+        "options": ["Ohm", "Farad", "Henry", "Watt"],
+        "correctAnswer": "Farad"
+      },
+      {
+        "id": "ece2",
+        "text": "Which component stores electrical energy?",
+        "type": "multiple-choice",
+        "options": ["Resistor", "Capacitor", "Inductor", "Diode"],
+        "correctAnswer": "Capacitor"
+      },
+      {
+        "id": "ece3",
+        "text": "What does ADC stand for?",
+        "type": "multiple-choice",
+        "options": ["Analog to Digital Converter", "Automatic Data Controller", "Analog Data Carrier", "Audio Data Converter"],
+        "correctAnswer": "Analog to Digital Converter"
+      },
+      {
+        "id": "ece4",
+        "text": "Do you know how a transistor works?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "ece5",
+        "text": "Rate your understanding of signal processing.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      },
+      {
+        "id": "ece6",
+        "text": "What is the main function of a diode?",
+        "type": "multiple-choice",
+        "options": ["Amplify signals", "Allow current to flow in one direction", "Store charge", "Filter noise"],
+        "correctAnswer": "Allow current to flow in one direction"
+      },
+      {
+        "id": "ece7",
+        "text": "Which frequency range does microwave communication use?",
+        "type": "multiple-choice",
+        "options": ["300 MHz to 300 GHz", "300 kHz to 300 MHz", "3 GHz to 30 GHz", "30 Hz to 300 Hz"],
+        "correctAnswer": "300 MHz to 300 GHz"
+      },
+      {
+        "id": "ece8",
+        "text": "Explain what modulation is in communications.",
+        "type": "multiple-choice",
+        "options": ["Varying signal properties", "Encrypting data", "Transmitting power", "Receiving signals"],
+        "correctAnswer": "Varying signal properties"
+      },
+      {
+        "id": "ece9",
+        "text": "Is understanding semiconductors important in ECE?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "ece10",
+        "text": "Rate your skill with PCB design software.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Electrical and Electronics Engineering Quiz",
+    "description": "Evaluate your knowledge of electrical circuits, power systems, and safety.",
+    "category": "EEE",
+    "questions": [
+      {
+        "id": "eee1",
+        "text": "What is the unit of electrical resistance?",
+        "type": "multiple-choice",
+        "options": ["Volt", "Ampere", "Ohm", "Watt"],
+        "correctAnswer": "Ohm"
+      },
+      {
+        "id": "eee2",
+        "text": "Which law states V = IR?",
+        "type": "multiple-choice",
+        "options": ["Faraday’s Law", "Ohm’s Law", "Kirchhoff’s Law", "Lenz’s Law"],
+        "correctAnswer": "Ohm’s Law"
+      },
+      {
+        "id": "eee3",
+        "text": "What device converts AC to DC?",
+        "type": "multiple-choice",
+        "options": ["Transformer", "Rectifier", "Inductor", "Capacitor"],
+        "correctAnswer": "Rectifier"
+      },
+      {
+        "id": "eee4",
+        "text": "Do you know the difference between single-phase and three-phase power?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Not sure"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "eee5",
+        "text": "Rate your knowledge of power systems.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      },
+      {
+        "id": "eee6",
+        "text": "What is the function of a circuit breaker?",
+        "type": "multiple-choice",
+        "options": ["Increase voltage", "Break electrical circuits during faults", "Store electrical energy", "Regulate current"],
+        "correctAnswer": "Break electrical circuits during faults"
+      },
+      {
+        "id": "eee7",
+        "text": "Which instrument is used to measure electric current?",
+        "type": "multiple-choice",
+        "options": ["Voltmeter", "Ammeter", "Wattmeter", "Ohmmeter"],
+        "correctAnswer": "Ammeter"
+      },
+      {
+        "id": "eee8",
+        "text": "What is the difference between series and parallel circuits?",
+        "type": "multiple-choice",
+        "options": ["Current same, voltage different", "Voltage same, current different", "Both same", "None"],
+        "correctAnswer": "Voltage same, current different"
+      },
+      {
+        "id": "eee9",
+        "text": "Is renewable energy important for EEE engineers?",
+        "type": "multiple-choice",
+        "options": ["Yes", "No", "Somewhat", "Don't know"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "id": "eee10",
+        "text": "Rate your familiarity with electrical safety standards.",
+        "type": "multiple-choice",
+        "options": ["Beginner", "Intermediate", "Advanced", "Expert"],
+        "correctAnswer": "Intermediate"
+      }
+    ]
+  }
+]
+
