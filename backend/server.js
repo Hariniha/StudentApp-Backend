@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth.js');
 const quizRoutes = require('./routes/quizzes.js');
 
 
@@ -32,12 +32,12 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch((err) => console.error('MongoDB connection error:', err));
 
 app.use('/api/auth', authRoutes);
-const achievementsRoutes = require('./routes/achievements');
+const achievementsRoutes = require('./routes/achievements.js');
 app.use('/api/achievements', achievementsRoutes);
-app.use('/api/marksheets', require('./routes/marksheets'));
+app.use('/api/marksheets', require('./routes/marksheets.js'));
 app.use('/api/quizzes', quizRoutes);
 // Routes
-const journalRoutes = require('./routes/journalRoutes');
+const journalRoutes = require('./routes/journalRoutes.js');
 app.use('/api/journal', journalRoutes);
 
 
